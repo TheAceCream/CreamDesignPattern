@@ -9,15 +9,8 @@ import java.util.Vector;
  */
 public class LockSingleton {
 
-    private static LockSingleton instance;
-    private Vector vector;
-    private boolean inUse;
-
-    private LockSingleton(){
-        vector = new Vector();
-        vector.add(new Object());
-        inUse = true;
-    }
+    private volatile static LockSingleton instance; //声明成 volatile
+    private LockSingleton (){}
 
     public static LockSingleton getInstance(){
         //当instance为null的时候，两个线程可以并发进入if语句内部
